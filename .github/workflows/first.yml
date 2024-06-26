@@ -4,9 +4,11 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: print greeting
-        run: echo "Done - bye!"
-      - name: running multiline commands
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Update Provider Version
         run: |
-             echo "this is first line"
-             echo "this is second line"
+             find=">= 3.51, < 5.0"
+             replace=">= 4.84, < 5.0"
+             sed -i "s/$find/$replace/g" config.tf
+
