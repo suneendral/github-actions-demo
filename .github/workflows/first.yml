@@ -7,16 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0
       - name: Update Provider Version
         run: |
              find=">= 3.51, < 5.0"
              replace=">= 4.84, < 5.0"
              sed -i "s/$find/$replace/g" config.tf
-             git status
-             git config --global user.email "suneendra.lingareddy@gmail.com"
-             git config --global user.name "Suneendra Kumar Reddy L"
-             git add config.tf
-             git commit -m "update config"
-             git push origin main
+             #git status
+             #git config --global user.email "suneendra.lingareddy@gmail.com"
+             #git config --global user.name "Suneendra Kumar Reddy L"
+             #git add config.tf
+             #git commit -m "update config"
+             #git push origin main
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
