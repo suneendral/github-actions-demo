@@ -14,6 +14,8 @@ jobs:
              replace=">= 4.84, < 5.0"
              sed -i "s/$find/$replace/g" config.tf
              git status
+             git config --global user.email "suneendra.lingareddy@gmail.com"
+             git config --global user.name "Suneendra Kumar Reddy L"
              git add config.tf
              git commit -m "update config"
              git push origin main
