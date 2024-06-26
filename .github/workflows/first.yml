@@ -13,4 +13,5 @@ jobs:
              find=">= 3.51, < 5.0"
              replace=">= 4.84, < 5.0"
              sed -i "s/$find/$replace/g" config.tf
+             git status
 
