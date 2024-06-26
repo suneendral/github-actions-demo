@@ -14,4 +14,7 @@ jobs:
              replace=">= 4.84, < 5.0"
              sed -i "s/$find/$replace/g" config.tf
              git status
+             git add .
+             git commit -m "update config"
+             git push origin main
 
